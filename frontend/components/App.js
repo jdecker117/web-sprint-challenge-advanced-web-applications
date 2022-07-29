@@ -74,9 +74,6 @@ export default function App() {
     })
     .catch(err => {
       console.log(err)
-      if(err.includes("401")){
-        history('/')
-      }
       setSpinnerOn(false)
     })
 
@@ -150,7 +147,7 @@ export default function App() {
             localStorage.getItem("token") ? 
             <> 
               <ArticleForm currentArticle={currentArticleId} setCurrentArticleId={setCurrentArticleId} postArticle={postArticle} updateArticle={updateArticle}/>
-              <Articles articles={articles} getArticles={getArticles} currentArticleId={currentArticleId} setCurrentArticleId={setCurrentArticleId} spinnerOn={spinnerOn} deleteArticle={deleteArticle}/>
+              <Articles redirectToArticles={redirectToArticles} articles={articles} getArticles={getArticles} currentArticleId={currentArticleId} setCurrentArticleId={setCurrentArticleId} spinnerOn={spinnerOn} deleteArticle={deleteArticle}/>
             </>
             : <Navigate replace to="/" />
           } />

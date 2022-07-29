@@ -14,8 +14,8 @@ export default function Articles(props) {
     // ✨ grab the articles here, on first render only
   }, [])
 
-  const handleEdit = (id) => {
-    setCurrentArticleId(id)
+  const handleEdit = (article) => {
+    setCurrentArticleId(article)
   }
 
   return (
@@ -27,6 +27,7 @@ export default function Articles(props) {
         !articles.length
           ? 'No articles yet'
           : articles.map(art => {
+            
             return (
               <div className="article" key={art.article_id}>
                 <div>
@@ -35,7 +36,7 @@ export default function Articles(props) {
                   <p>Topic: {art.topic}</p>
                 </div>
                 <div>
-                  <button disabled={true} onClick={()=>Function.prototype}>Edit</button>
+                  <button disabled={false} onClick={()=>handleEdit(art)}>Edit</button>
                   <button disabled={false} onClick={()=>deleteArticle(art.article_id)}>Delete</button>
                 </div>
               </div>
